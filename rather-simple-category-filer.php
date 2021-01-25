@@ -173,6 +173,7 @@ class Rather_Simple_Category_Filter {
         <div class="qodef-filter-holder-inner">
         <?php
         $rand_number = rand();
+        $term_id = get_queried_object_id();
         if ( is_array( $filter_categories ) && is_array( $filter_categories['parent_categories'] ) && count( $filter_categories['parent_categories'] ) ) { ?>
 			<ul class="qodef-filter-parent-categories clearfix" data-class="filter_<?php echo $rand_number; ?>">
 				<?php
@@ -184,8 +185,10 @@ class Rather_Simple_Category_Filter {
                 ?>
 					<li data-class="filter_<?php echo $rand_number; ?>" class="parent-filter filter_<?php echo $rand_number; ?>" data-filter="<?php echo $all_parent_array; ?>" data-group-id="-1"><a href=""><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></a></li>
 				<?php
-				foreach ( $filter_categories['parent_categories'] as $parent ) : ?>
-					<li class="parent-filter filter_<?php echo $rand_number; ?>" data-filter=".portfolio_category_<?php echo $parent->term_id; ?>" data-class="filter_<?php echo $rand_number; ?>" data-group-id="<?php echo $parent->term_id; ?>"><a href="<?php echo get_term_link( $parent->term_id ); ?>"><?php echo $parent->name; ?></a></li>
+                foreach ( $filter_categories['parent_categories'] as $parent ) :
+                    $is_term_active = ( $parent->term_id == $term_id ) ? ' current-term' : '';
+                    ?>
+					<li class="parent-filter filter_<?php echo $rand_number; ?><?php echo $is_term_active; ?>" data-filter=".portfolio_category_<?php echo $parent->term_id; ?>" data-class="filter_<?php echo $rand_number; ?>" data-group-id="<?php echo $parent->term_id; ?>"><a href="<?php echo get_term_link( $parent->term_id ); ?>"><?php echo $parent->name; ?></a></li>
                 <?php
                 endforeach;
                 ?>
@@ -209,11 +212,10 @@ class Rather_Simple_Category_Filter {
                                 <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?>" data-filter="<?php echo $all_array; ?>"><a href=""><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></a></li>
                             <?php
                             foreach ( $child_group['value'] as $child ) :
+                                $is_term_active = ( $child->term_id == $term_id ) ? ' current-term' : '';
                                 ?>
-                                    <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?>" data-filter=".portfolio_category_<?php echo $child->term_id; ?>">
-                                        <a href="<?php echo get_term_link( $child->term_id ); ?>">
-                                            <?php echo $child->name; ?>
-                                        </a>
+                                    <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?><?php echo $is_term_active; ?>" data-filter=".portfolio_category_<?php echo $child->term_id; ?>">
+                                        <a href="<?php echo get_term_link( $child->term_id ); ?>"><?php echo $child->name; ?></a>
                                     </li>
                                 <?php
                             endforeach;
