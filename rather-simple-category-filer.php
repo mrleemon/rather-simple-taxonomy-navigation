@@ -116,10 +116,10 @@ class Rather_Simple_Category_Filter {
 				}
 				$all_parent_array = implode( ', ', $parent );
                 ?>
-					<li data-class="filter_<?php print $rand_number ?>" class="parent-filter filter_<?php print $rand_number ?>" data-filter="<?php print $all_parent_array; ?>" data-group-id="-1"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' )?></span></li>
+					<li data-class="filter_<?php print $rand_number ?>" class="parent-filter filter_<?php print $rand_number ?>" data-filter="<?php print $all_parent_array; ?>" data-group-id="-1"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
 				<?php
 				foreach ( $filter_categories['parent_categories'] as $parent ) { ?>
-					<li class="parent-filter filter_<?php print $rand_number ?>" data-filter=".portfolio_category_<?php print $parent->term_id ?>" data-class="filter_<?php print $rand_number ?>" data-group-id="<?php print $parent->term_id ?>"><span><?php print $parent->name ?></span></li>
+					<li class="parent-filter filter_<?php print $rand_number ?>" data-filter=".portfolio_category_<?php print $parent->term_id ?>" data-class="filter_<?php print $rand_number; ?>" data-group-id="<?php print $parent->term_id ?>"><span><?php print $parent->name; ?></span></li>
 					<?php } ?>
 			</ul>
         <?php }
@@ -133,12 +133,12 @@ class Rather_Simple_Category_Filter {
                         if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
                             $children = array();
                             foreach ( $child_group['value'] as $child ) {
-                                $children[] = '.portfolio_category_'.$child->term_id;
+                                $children[] = '.portfolio_category_' . $child->term_id;
                             }
                             $children[] = '.portfolio_category_' . $child_group['id'];
                             $all_array = implode( ', ', $children );
                             ?>
-                                <li data-class="filter_<?php print $rand_number ?>" class="filter_<?php print $rand_number ?>" data-filter="<?php print $all_array; ?>"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' )?></span></li>
+                                <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number ?>" data-filter="<?php print $all_array; ?>"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
                             <?php
                             foreach ( $child_group['value'] as $child ) {
                                 ?>
