@@ -1,14 +1,13 @@
-.qodef-portfolio-filter-holder-inner .qodef-portfolio-filter-parent-categories {
+.qodef-filter-holder-inner .qodef-filter-parent-categories {
     margin-bottom: 5px;
 }
 
-.qodef-portfolio-filter-holder-inner ul {
+.qodef-filter-holder-inner ul {
     display: block;
     list-style: none;
-    vertical-align: middle;
 }
 
-.qodef-portfolio-filter-holder-inner ul li {
+.qodef-filter-holder-inner ul li {
     cursor: pointer;
     display: inline-block;
     margin: 0;
@@ -17,7 +16,7 @@
     padding-left: 15px;
 }
 
-.qodef-portfolio-filter-holder-inner .qodef-portfolio-filter-child-categories {
+.qodef-filter-holder-inner .qodef-filter-child-categories {
     left: 0;
     right: 0;
     margin: 0 auto;

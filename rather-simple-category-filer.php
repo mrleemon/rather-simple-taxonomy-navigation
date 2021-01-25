@@ -170,11 +170,11 @@ class Rather_Simple_Category_Filter {
         $params['filter_order_by'] = 'name';
         $filter_categories = Rather_Simple_Category_Filter::get_filter_categories( $params );
         ?>
-        <div class="qodef-portfolio-filter-holder-inner">
+        <div class="qodef-filter-holder-inner">
         <?php
         $rand_number = rand();
         if ( is_array( $filter_categories ) && is_array( $filter_categories['parent_categories'] ) && count( $filter_categories['parent_categories'] ) ) { ?>
-			<ul class="qodef-portfolio-filter-parent-categories clearfix" data-class="filter_<?php echo $rand_number; ?>">
+			<ul class="qodef-filter-parent-categories clearfix" data-class="filter_<?php echo $rand_number; ?>">
 				<?php
 				$parent = array();
 				foreach ( $filter_categories['parent_categories'] as $par ) {
@@ -193,9 +193,9 @@ class Rather_Simple_Category_Filter {
         <?php }
 
         if ( is_array( $filter_categories ) && is_array( $filter_categories['child_categories'] ) && count( $filter_categories['child_categories'] ) ) { ?>
-            <div class="qodef-portfolio-filter-child-categories-holder">
+            <div class="qodef-filter-child-categories-holder">
                 <?php foreach ( $filter_categories['child_categories'] as $child_group ) { ?>
-                    <ul class="qodef-portfolio-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php echo $child_group['id']; ?>" data-class="filter_<?php echo $rand_number; ?>">
+                    <ul class="qodef-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php echo $child_group['id']; ?>" data-class="filter_<?php echo $rand_number; ?>">
                         <?php
 
                         if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
@@ -238,11 +238,11 @@ class Rather_Simple_Category_Filter {
         $params['filter_order_by'] = 'name';
         $filter_categories = Rather_Simple_Category_Filter::get_filter_categories( $params );
         ?>
-        <div class="qodef-portfolio-filter-holder-inner">
+        <div class="qodef-filter-holder-inner">
         <?php
         $rand_number = rand();
         if ( is_array( $filter_categories ) && is_array( $filter_categories['parent_categories'] ) && count( $filter_categories['parent_categories'] ) ) { ?>
-			<ul class="qodef-portfolio-filter-parent-categories clearfix" data-class="filter_<?php echo $rand_number; ?>">
+			<ul class="qodef-filter-parent-categories clearfix" data-class="filter_<?php echo $rand_number; ?>">
 				<?php
 				$parent = array();
 				foreach ( $filter_categories['parent_categories'] as $par ) {
@@ -261,9 +261,9 @@ class Rather_Simple_Category_Filter {
         <?php }
 
         if ( is_array( $filter_categories ) && is_array( $filter_categories['child_categories'] ) && count( $filter_categories['child_categories'] ) ) { ?>
-            <div class="qodef-portfolio-filter-child-categories-holder">
+            <div class="qodef-filter-child-categories-holder">
                 <?php foreach ( $filter_categories['child_categories'] as $child_group ) { ?>
-                    <ul class="qodef-portfolio-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php echo $child_group['id']; ?>" data-class="filter_<?php echo $rand_number; ?>">
+                    <ul class="qodef-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php echo $child_group['id']; ?>" data-class="filter_<?php echo $rand_number; ?>">
                         <?php
 
                         if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
