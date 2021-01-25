@@ -174,7 +174,7 @@ class Rather_Simple_Category_Filter {
         <?php
         $rand_number = rand();
         if ( is_array( $filter_categories ) && is_array( $filter_categories['parent_categories'] ) && count( $filter_categories['parent_categories'] ) ) { ?>
-			<ul class="qodef-portfolio-filter-parent-categories clearfix" data-class="filter_<?php print $rand_number ?>">
+			<ul class="qodef-portfolio-filter-parent-categories clearfix" data-class="filter_<?php echo $rand_number; ?>">
 				<?php
 				$parent = array();
 				foreach ( $filter_categories['parent_categories'] as $par ) {
@@ -182,10 +182,10 @@ class Rather_Simple_Category_Filter {
 				}
 				$all_parent_array = implode( ', ', $parent );
                 ?>
-					<li data-class="filter_<?php print $rand_number ?>" class="parent-filter filter_<?php print $rand_number ?>" data-filter="<?php print $all_parent_array; ?>" data-group-id="-1"><a href=""><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></a></li>
+					<li data-class="filter_<?php echo $rand_number; ?>" class="parent-filter filter_<?php echo $rand_number; ?>" data-filter="<?php echo $all_parent_array; ?>" data-group-id="-1"><a href=""><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></a></li>
 				<?php
 				foreach ( $filter_categories['parent_categories'] as $parent ) : ?>
-					<li class="parent-filter filter_<?php print $rand_number ?>" data-filter=".portfolio_category_<?php print $parent->term_id; ?>" data-class="filter_<?php print $rand_number; ?>" data-group-id="<?php print $parent->term_id; ?>"><a href="<?php echo get_term_link( $parent->term_id ); ?>"><?php print $parent->name; ?></a></li>
+					<li class="parent-filter filter_<?php echo $rand_number; ?>" data-filter=".portfolio_category_<?php echo $parent->term_id; ?>" data-class="filter_<?php echo $rand_number; ?>" data-group-id="<?php echo $parent->term_id; ?>"><a href="<?php echo get_term_link( $parent->term_id ); ?>"><?php echo $parent->name; ?></a></li>
                 <?php
                 endforeach;
                 ?>
@@ -195,7 +195,7 @@ class Rather_Simple_Category_Filter {
         if ( is_array( $filter_categories ) && is_array( $filter_categories['child_categories'] ) && count( $filter_categories['child_categories'] ) ) { ?>
             <div class="qodef-portfolio-filter-child-categories-holder">
                 <?php foreach ( $filter_categories['child_categories'] as $child_group ) { ?>
-                    <ul class="qodef-portfolio-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php print $child_group['id']; ?>" data-class="filter_<?php print $rand_number; ?>">
+                    <ul class="qodef-portfolio-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php echo $child_group['id']; ?>" data-class="filter_<?php echo $rand_number; ?>">
                         <?php
 
                         if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
@@ -206,13 +206,13 @@ class Rather_Simple_Category_Filter {
                             $children[] = '.portfolio_category_' . $child_group['id'];
                             $all_array = implode( ', ', $children );
                             ?>
-                                <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number ?>" data-filter="<?php print $all_array; ?>"><a href=""><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></a></li>
+                                <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?>" data-filter="<?php echo $all_array; ?>"><a href=""><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></a></li>
                             <?php
                             foreach ( $child_group['value'] as $child ) :
                                 ?>
-                                    <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number; ?>" data-filter=".portfolio_category_<?php print $child->term_id; ?>">
+                                    <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?>" data-filter=".portfolio_category_<?php echo $child->term_id; ?>">
                                         <a href="<?php echo get_term_link( $child->term_id ); ?>">
-                                            <?php print $child->name; ?>
+                                            <?php echo $child->name; ?>
                                         </a>
                                     </li>
                                 <?php
@@ -242,7 +242,7 @@ class Rather_Simple_Category_Filter {
         <?php
         $rand_number = rand();
         if ( is_array( $filter_categories ) && is_array( $filter_categories['parent_categories'] ) && count( $filter_categories['parent_categories'] ) ) { ?>
-			<ul class="qodef-portfolio-filter-parent-categories clearfix" data-class="filter_<?php print $rand_number ?>">
+			<ul class="qodef-portfolio-filter-parent-categories clearfix" data-class="filter_<?php echo $rand_number; ?>">
 				<?php
 				$parent = array();
 				foreach ( $filter_categories['parent_categories'] as $par ) {
@@ -250,10 +250,10 @@ class Rather_Simple_Category_Filter {
 				}
 				$all_parent_array = implode( ', ', $parent );
                 ?>
-					<li data-class="filter_<?php print $rand_number ?>" class="parent-filter filter_<?php print $rand_number ?>" data-filter="<?php print $all_parent_array; ?>" data-group-id="-1"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
+					<li data-class="filter_<?php echo $rand_number; ?>" class="parent-filter filter_<?php echo $rand_number; ?>" data-filter="<?php echo $all_parent_array; ?>" data-group-id="-1"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
 				<?php
 				foreach ( $filter_categories['parent_categories'] as $parent ) : ?>
-					<li class="parent-filter filter_<?php print $rand_number ?>" data-filter=".portfolio_category_<?php print $parent->term_id ?>" data-class="filter_<?php print $rand_number; ?>" data-group-id="<?php print $parent->term_id ?>"><span><?php print $parent->name; ?></span></li>
+					<li class="parent-filter filter_<?php echo $rand_number; ?>" data-filter=".portfolio_category_<?php echo $parent->term_id; ?>" data-class="filter_<?php echo $rand_number; ?>" data-group-id="<?php echo $parent->term_id; ?>"><span><?php echo $parent->name; ?></span></li>
                     <?php
                 endforeach;
                 ?>
@@ -263,7 +263,7 @@ class Rather_Simple_Category_Filter {
         if ( is_array( $filter_categories ) && is_array( $filter_categories['child_categories'] ) && count( $filter_categories['child_categories'] ) ) { ?>
             <div class="qodef-portfolio-filter-child-categories-holder">
                 <?php foreach ( $filter_categories['child_categories'] as $child_group ) { ?>
-                    <ul class="qodef-portfolio-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php print $child_group['id']; ?>" data-class="filter_<?php print $rand_number; ?>">
+                    <ul class="qodef-portfolio-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php echo $child_group['id']; ?>" data-class="filter_<?php echo $rand_number; ?>">
                         <?php
 
                         if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
@@ -274,13 +274,13 @@ class Rather_Simple_Category_Filter {
                             $children[] = '.portfolio_category_' . $child_group['id'];
                             $all_array = implode( ', ', $children );
                             ?>
-                                <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number ?>" data-filter="<?php print $all_array; ?>"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
+                                <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?>" data-filter="<?php echo $all_array; ?>"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
                             <?php
                             foreach ( $child_group['value'] as $child ) :
                                 ?>
-                                    <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number; ?>" data-filter=".portfolio_category_<?php print $child->term_id; ?>">
+                                    <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?>" data-filter=".portfolio_category_<?php echo $child->term_id; ?>">
                                         <span>
-                                            <?php print $child->name; ?>
+                                            <?php echo $child->name; ?>
                                         </span>
                                     </li>
                                 <?php
