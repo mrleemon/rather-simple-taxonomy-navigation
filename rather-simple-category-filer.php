@@ -64,7 +64,7 @@ class Rather_Simple_Category_Filter {
         add_action( 'init', array( $this, 'load_language' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
-        add_action( 'woocommerce_before_shop_loop', array( $this, 'add_category_filter' ) );
+        add_action( 'woocommerce_before_shop_loop', array( $this, 'add_category_filter_links' ) );
 
     }
     
@@ -94,72 +94,6 @@ class Rather_Simple_Category_Filter {
     }
 
     /**
-     * Generates product categories html based on id
-     *
-     * @param $params
-     *
-     * @return html
-     */
-	public function add_category_filter() {
-        $params['filter_order_by'] = 'name';
-        $filter_categories = Rather_Simple_Category_Filter::get_filter_categories( $params );
-        ?>
-        <div class="qodef-portfolio-filter-holder-inner">
-        <?php
-        $rand_number = rand();
-        if ( is_array( $filter_categories ) && is_array( $filter_categories['parent_categories'] ) && count( $filter_categories['parent_categories'] ) ) { ?>
-			<ul class="qodef-portfolio-filter-parent-categories clearfix" data-class="filter_<?php print $rand_number ?>">
-				<?php
-				$parent = array();
-				foreach($filter_categories['parent_categories'] as $par) {
-					$parent[] = '.portfolio_category_' . $par->term_id;
-				}
-				$all_parent_array = implode( ', ', $parent );
-                ?>
-					<li data-class="filter_<?php print $rand_number ?>" class="parent-filter filter_<?php print $rand_number ?>" data-filter="<?php print $all_parent_array; ?>" data-group-id="-1"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
-				<?php
-				foreach ( $filter_categories['parent_categories'] as $parent ) { ?>
-					<li class="parent-filter filter_<?php print $rand_number ?>" data-filter=".portfolio_category_<?php print $parent->term_id ?>" data-class="filter_<?php print $rand_number; ?>" data-group-id="<?php print $parent->term_id ?>"><span><?php print $parent->name; ?></span></li>
-					<?php } ?>
-			</ul>
-        <?php }
-
-        if ( is_array( $filter_categories ) && is_array( $filter_categories['child_categories'] ) && count( $filter_categories['child_categories'] ) ) { ?>
-            <div class="qodef-portfolio-filter-child-categories-holder">
-                <?php foreach ( $filter_categories['child_categories'] as $child_group ) { ?>
-                    <ul class="qodef-portfolio-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php print $child_group['id']; ?>" data-class="filter_<?php print $rand_number; ?>">
-                        <?php
-
-                        if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
-                            $children = array();
-                            foreach ( $child_group['value'] as $child ) {
-                                $children[] = '.portfolio_category_' . $child->term_id;
-                            }
-                            $children[] = '.portfolio_category_' . $child_group['id'];
-                            $all_array = implode( ', ', $children );
-                            ?>
-                                <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number ?>" data-filter="<?php print $all_array; ?>"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
-                            <?php
-                            foreach ( $child_group['value'] as $child ) {
-                                ?>
-                                    <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number; ?>" data-filter=".portfolio_category_<?php print $child->term_id; ?>">
-                                        <span>
-                                            <?php print $child->name; ?>
-                                        </span>
-                                    </li>
-                                <?php
-                            }
-                        }?>
-                    </ul>
-                <?php } ?>
-            </div>
-        <?php } ?>
-        </div>
-        <?php
-
-    }
-
-	/**
      * Generates filter categories array
      *
      * @param $params
@@ -224,6 +158,139 @@ class Rather_Simple_Category_Filter {
 		return $categories_groups;
 		
 	}
+
+    /**
+     * Generates product categories html based on id
+     *
+     * @param $params
+     *
+     * @return html
+     */
+	public function add_category_filter_links() {
+        $params['filter_order_by'] = 'name';
+        $filter_categories = Rather_Simple_Category_Filter::get_filter_categories( $params );
+        ?>
+        <div class="qodef-portfolio-filter-holder-inner">
+        <?php
+        $rand_number = rand();
+        if ( is_array( $filter_categories ) && is_array( $filter_categories['parent_categories'] ) && count( $filter_categories['parent_categories'] ) ) { ?>
+			<ul class="qodef-portfolio-filter-parent-categories clearfix" data-class="filter_<?php print $rand_number ?>">
+				<?php
+				$parent = array();
+				foreach($filter_categories['parent_categories'] as $par) {
+					$parent[] = '.portfolio_category_' . $par->term_id;
+				}
+				$all_parent_array = implode( ', ', $parent );
+                ?>
+					<li data-class="filter_<?php print $rand_number ?>" class="parent-filter filter_<?php print $rand_number ?>" data-filter="<?php print $all_parent_array; ?>" data-group-id="-1"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
+				<?php
+				foreach ( $filter_categories['parent_categories'] as $parent ) { ?>
+					<li class="parent-filter filter_<?php print $rand_number ?>" data-filter=".portfolio_category_<?php print $parent->term_id ?>" data-class="filter_<?php print $rand_number; ?>" data-group-id="<?php print $parent->term_id ?>"><span><?php print $parent->name; ?></span></li>
+					<?php } ?>
+			</ul>
+        <?php }
+
+        if ( is_array( $filter_categories ) && is_array( $filter_categories['child_categories'] ) && count( $filter_categories['child_categories'] ) ) { ?>
+            <div class="qodef-portfolio-filter-child-categories-holder">
+                <?php foreach ( $filter_categories['child_categories'] as $child_group ) { ?>
+                    <ul class="qodef-portfolio-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php print $child_group['id']; ?>" data-class="filter_<?php print $rand_number; ?>">
+                        <?php
+
+                        if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
+                            $children = array();
+                            foreach ( $child_group['value'] as $child ) {
+                                $children[] = '.portfolio_category_' . $child->term_id;
+                            }
+                            $children[] = '.portfolio_category_' . $child_group['id'];
+                            $all_array = implode( ', ', $children );
+                            ?>
+                                <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number ?>" data-filter="<?php print $all_array; ?>"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
+                            <?php
+                            foreach ( $child_group['value'] as $child ) {
+                                ?>
+                                    <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number; ?>" data-filter=".portfolio_category_<?php print $child->term_id; ?>">
+                                        <span>
+                                            <?php print $child->name; ?>
+                                        </span>
+                                    </li>
+                                <?php
+                            }
+                        } ?>
+                    </ul>
+                <?php } ?>
+            </div>
+        <?php } ?>
+        </div>
+        <?php
+
+    }
+
+    /**
+     * Generates product categories html based on id
+     *
+     * @param $params
+     *
+     * @return html
+     */
+	public function add_category_filter() {
+        $params['filter_order_by'] = 'name';
+        $filter_categories = Rather_Simple_Category_Filter::get_filter_categories( $params );
+        ?>
+        <div class="qodef-portfolio-filter-holder-inner">
+        <?php
+        $rand_number = rand();
+        if ( is_array( $filter_categories ) && is_array( $filter_categories['parent_categories'] ) && count( $filter_categories['parent_categories'] ) ) { ?>
+			<ul class="qodef-portfolio-filter-parent-categories clearfix" data-class="filter_<?php print $rand_number ?>">
+				<?php
+				$parent = array();
+				foreach($filter_categories['parent_categories'] as $par) {
+					$parent[] = '.portfolio_category_' . $par->term_id;
+				}
+				$all_parent_array = implode( ', ', $parent );
+                ?>
+					<li data-class="filter_<?php print $rand_number ?>" class="parent-filter filter_<?php print $rand_number ?>" data-filter="<?php print $all_parent_array; ?>" data-group-id="-1"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
+				<?php
+				foreach ( $filter_categories['parent_categories'] as $parent ) { ?>
+					<li class="parent-filter filter_<?php print $rand_number ?>" data-filter=".portfolio_category_<?php print $parent->term_id ?>" data-class="filter_<?php print $rand_number; ?>" data-group-id="<?php print $parent->term_id ?>"><span><?php print $parent->name; ?></span></li>
+					<?php } ?>
+			</ul>
+        <?php }
+
+        if ( is_array( $filter_categories ) && is_array( $filter_categories['child_categories'] ) && count( $filter_categories['child_categories'] ) ) { ?>
+            <div class="qodef-portfolio-filter-child-categories-holder">
+                <?php foreach ( $filter_categories['child_categories'] as $child_group ) { ?>
+                    <ul class="qodef-portfolio-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php print $child_group['id']; ?>" data-class="filter_<?php print $rand_number; ?>">
+                        <?php
+
+                        if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
+                            $children = array();
+                            foreach ( $child_group['value'] as $child ) {
+                                $children[] = '.portfolio_category_' . $child->term_id;
+                            }
+                            $children[] = '.portfolio_category_' . $child_group['id'];
+                            $all_array = implode( ', ', $children );
+                            ?>
+                                <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number ?>" data-filter="<?php print $all_array; ?>"><span><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></span></li>
+                            <?php
+                            foreach ( $child_group['value'] as $child ) {
+                                ?>
+                                    <li data-class="filter_<?php print $rand_number; ?>" class="filter_<?php print $rand_number; ?>" data-filter=".portfolio_category_<?php print $child->term_id; ?>">
+                                        <span>
+                                            <?php print $child->name; ?>
+                                        </span>
+                                    </li>
+                                <?php
+                            }
+                        } ?>
+                    </ul>
+                <?php } ?>
+            </div>
+        <?php } ?>
+        </div>
+        <?php
+
+    }
+
     
 }
 
