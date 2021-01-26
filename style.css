@@ -36,3 +36,7 @@
 .qodef-filter-holder-inner .qodef-filter-child-categories.current-term {
     display: block;
 }
+
+.qodef-filter-holder-inner .current-term {
+    font-weight: 700;
+}
