@@ -42,6 +42,7 @@
 }
 
 ul.term-nav {
+    position: relative;
     list-style: none;
     text-align: center;
 }
@@ -50,4 +51,16 @@ ul.term-nav li {
     display: inline-block;
     margin: 0;
     padding: 0 15px;
+}
+
+ul.term-nav li.current-term {
+    font-weight: 700;
+}
+
+ul.term-nav li ul.term-nav {
+    position: absolute;
+    top: auto;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }
