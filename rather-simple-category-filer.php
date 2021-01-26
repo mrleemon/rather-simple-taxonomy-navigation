@@ -180,7 +180,7 @@ class Rather_Simple_Category_Filter {
 				<?php
 				$parent = array();
 				foreach ( $filter_categories['parent_categories'] as $par ) {
-					$parent[] = '.portfolio_category_' . $par->term_id;
+					$parent[] = '.category_' . $par->term_id;
 				}
 				$all_parent_array = implode( ', ', $parent );
                 ?>
@@ -189,7 +189,7 @@ class Rather_Simple_Category_Filter {
                 foreach ( $filter_categories['parent_categories'] as $parent ) :
                     $is_term_active = ( $parent->term_id == $term_id ) ? ' current-term' : '';
                     ?>
-					<li class="parent-filter filter_<?php echo $rand_number; ?><?php echo $is_term_active; ?>" data-filter=".portfolio_category_<?php echo $parent->term_id; ?>" data-class="filter_<?php echo $rand_number; ?>" data-group-id="<?php echo $parent->term_id; ?>"><a href="<?php echo get_term_link( $parent->term_id ); ?>"><?php echo $parent->name; ?></a></li>
+					<li class="parent-filter filter_<?php echo $rand_number; ?><?php echo $is_term_active; ?>" data-filter=".category_<?php echo $parent->term_id; ?>" data-class="filter_<?php echo $rand_number; ?>" data-group-id="<?php echo $parent->term_id; ?>"><a href="<?php echo get_term_link( $parent->term_id ); ?>"><?php echo $parent->name; ?></a></li>
                 <?php
                 endforeach;
                 ?>
@@ -206,9 +206,9 @@ class Rather_Simple_Category_Filter {
                         if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
                             $children = array();
                             foreach ( $child_group['value'] as $child ) {
-                                $children[] = '.portfolio_category_' . $child->term_id;
+                                $children[] = '.category_' . $child->term_id;
                             }
-                            $children[] = '.portfolio_category_' . $child_group['id'];
+                            $children[] = '.category_' . $child_group['id'];
                             $all_array = implode( ', ', $children );
                             ?>
                                 <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?>" data-filter="<?php echo $all_array; ?>"><a href=""><?php esc_html_e( 'All', 'rather-simple-category-filter' ); ?></a></li>
@@ -216,7 +216,7 @@ class Rather_Simple_Category_Filter {
                             foreach ( $child_group['value'] as $child ) :
                                 $is_term_active = ( $child->term_id == $term_id ) ? ' current-term' : '';
                                 ?>
-                                    <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?><?php echo $is_term_active; ?>" data-filter=".portfolio_category_<?php echo $child->term_id; ?>">
+                                    <li data-class="filter_<?php echo $rand_number; ?>" class="filter_<?php echo $rand_number; ?><?php echo $is_term_active; ?>" data-filter=".category_<?php echo $child->term_id; ?>">
                                         <a href="<?php echo get_term_link( $child->term_id ); ?>"><?php echo $child->name; ?></a>
                                     </li>
                                 <?php
