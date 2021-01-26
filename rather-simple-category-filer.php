@@ -167,6 +167,7 @@ class Rather_Simple_Category_Filter {
      * @return html
      */
 	public function add_category_filter_links() {
+        $params['category'] = 'shop';
         $params['filter_order_by'] = 'name';
         $filter_categories = Rather_Simple_Category_Filter::get_filter_categories( $params );
         ?>
