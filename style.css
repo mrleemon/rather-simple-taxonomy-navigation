@@ -58,9 +58,14 @@ ul.term-nav li.current-term {
 }
 
 ul.term-nav li ul.term-nav {
+    display: none;
     position: absolute;
     top: auto;
     left: 0;
     right: 0;
     margin: 0 auto;
+}
+
+ul.term-nav li.current-term ul.term-nav {
+    display: block;
 }
