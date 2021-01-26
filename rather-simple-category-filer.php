@@ -119,7 +119,7 @@ class Rather_Simple_Category_Filter {
             'taxonomy'   => 'product_cat',
 			'child_of'   => $cat_id,
             'orderby'    => $params['filter_order_by'],
-            'hide_empty' => false,
+            'hide_empty' => true,
 		);
 		
 		$filter_categories = get_terms( $args );
@@ -145,7 +145,7 @@ class Rather_Simple_Category_Filter {
                     'taxonomy'   => 'product_cat',
 					'child_of'   => $parent->term_id,
                     'order_by'   => $params['filter_order_by'],
-                    'hide_empty' => false,
+                    'hide_empty' => true,
 				);
 				$child = array();
 				$child['id'] = $parent->term_id;
