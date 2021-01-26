@@ -64,7 +64,8 @@ class Rather_Simple_Category_Filter {
         add_action( 'init', array( $this, 'load_language' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
-        add_action( 'woocommerce_before_shop_loop', array( $this, 'add_category_filter_links' ) );
+        //add_action( 'woocommerce_before_shop_loop', array( $this, 'add_category_filter_links' ) );
+        add_action( 'woocommerce_before_shop_loop', array( $this, 'show_terms_navigation' ) );
 
     }
     
@@ -158,6 +159,48 @@ class Rather_Simple_Category_Filter {
 		return $categories_groups;
 		
 	}
+
+    /**
+     * Get taxonomy hierarchy
+     *
+     * @param $taxonomy
+     * @param $parent
+	 * 
+	 * @return string
+     */
+    public function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
+        $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
+        $args = array(
+            'taxonomy'   => 'product_cat',
+            'parent'     => $parent,
+            'order_by'   => 'name',
+            'hide_empty' => true,
+        );
+        $terms = get_terms( $args );
+        $html = '';
+        if ( $terms ) {
+            $html .= '<ul class="term-nav">';
+            $html .= '<li><a href="">' . esc_html( 'All', 'rather-simple-category-filter' ) . '</a></li>';
+            foreach ( $terms as $term ){
+                $html .= '<li>';
+                $html .= '<a href="' . get_term_link( $term->term_id ) . '">' . $term->name . '</a>';
+                $html .= Rather_Simple_Category_Filter::get_taxonomy_hierarchy( $taxonomy, $term->term_id );
+                $html .= '</a>';
+                $html .= '</li>';
+            }
+            $html .= '</ul>';
+        }
+        return $html;
+    }
+
+    /**
+     * Show terms navigation
+     *
+     */
+    public function show_terms_navigation() {
+        $html = Rather_Simple_Category_Filter::get_taxonomy_hierarchy( 'product_cat' );
+        echo $html;
+    }
 
     /**
      * Generates product categories html based on id
