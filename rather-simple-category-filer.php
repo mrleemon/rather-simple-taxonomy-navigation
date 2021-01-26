@@ -197,10 +197,11 @@ class Rather_Simple_Category_Filter {
 
         if ( is_array( $filter_categories ) && is_array( $filter_categories['child_categories'] ) && count( $filter_categories['child_categories'] ) ) { ?>
             <div class="qodef-filter-child-categories-holder">
-                <?php foreach ( $filter_categories['child_categories'] as $child_group ) { ?>
-                    <ul class="qodef-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?>" data-parent-id="<?php echo $child_group['id']; ?>" data-class="filter_<?php echo $rand_number; ?>">
+                <?php foreach ( $filter_categories['child_categories'] as $child_group ) {
+                    $is_parent_active = ( $child_group['id'] == $term_id || term_is_ancestor_of( $child_group['id'], $term_id, 'product_cat' ) ) ? ' current-term' : '';
+                    ?>
+                    <ul class="qodef-filter-child-categories clearfix <?php echo esc_attr( $single_cat_class ); ?><?php echo $is_parent_active; ?>" data-parent-id="<?php echo $child_group['id']; ?>" data-class="filter_<?php echo $rand_number; ?>">
                         <?php
-
                         if ( is_array( $child_group['value'] ) && count( $child_group['value'] ) ) {
                             $children = array();
                             foreach ( $child_group['value'] as $child ) {
