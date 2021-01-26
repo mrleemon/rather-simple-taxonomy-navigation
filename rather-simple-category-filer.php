@@ -168,25 +168,26 @@ class Rather_Simple_Category_Filter {
 	 * 
 	 * @return string
      */
-    public function get_taxonomy_hierarchy( $taxonomy, $parent = 0 ) {
+    public function get_taxonomy_hierarchy( $taxonomy, $parent = 0, $depth = 0 ) {
         $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
+        $html = '';
+        $current_term_id = get_queried_object_id();
         $args = array(
             'taxonomy'   => 'product_cat',
             'parent'     => $parent,
             'order_by'   => 'name',
             'hide_empty' => true,
         );
-        $html = '';
-        $current_term_id = get_queried_object_id();
         $terms = get_terms( $args );
         if ( $terms ) {
-            $html .= '<ul class="term-nav">';
+            $is_submenu = ( $depth > 0 ) ? ' sub-menu': '';
+            $html .= '<ul class="term-nav' . $is_submenu . '">';
             $html .= '<li><a href="">' . esc_html( 'All', 'rather-simple-category-filter' ) . '</a></li>';
             foreach ( $terms as $term ){
                 $is_term_active = ( $term->term_id == $current_term_id ) ? ' current-term' : '';
                 $html .= '<li class="' . $is_term_active . '">';
                 $html .= '<a href="' . get_term_link( $term->term_id ) . '">' . $term->name . '</a>';
-                $html .= Rather_Simple_Category_Filter::get_taxonomy_hierarchy( $taxonomy, $term->term_id );
+                $html .= Rather_Simple_Category_Filter::get_taxonomy_hierarchy( $taxonomy, $term->term_id, $depth + 1 );
                 $html .= '</a>';
                 $html .= '</li>';
             }
