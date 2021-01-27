@@ -183,9 +183,12 @@ class Rather_Simple_Category_Filter {
             $is_submenu = ( $depth > 0 ) ? ' sub-menu': '';
             $html .= '<ul class="term-nav' . $is_submenu . '">';
             $html .= '<li><a href="">' . esc_html( 'All', 'rather-simple-category-filter' ) . '</a></li>';
-            foreach ( $terms as $term ){
-                $is_term_active = ( $term->term_id == $current_term_id ) ? ' current-term' : '';
-                $html .= '<li class="' . $is_term_active . '">';
+            foreach ( $terms as $term ) {
+                $classes = [];
+                $classes[] = 'term-item';
+                $classes[] = ( $term->term_id == $current_term_id ) ? 'current-term' : '';
+                $classes[] = ( term_is_ancestor_of( $term->term_id, $current_term_id, $taxonomy ) ) ? 'current-term-parent' : '';
+                $html .= '<li class="' . esc_attr( implode( ' ', $classes ) ) . '">';
                 $html .= '<a href="' . get_term_link( $term->term_id ) . '">' . $term->name . '</a>';
                 $html .= Rather_Simple_Category_Filter::get_taxonomy_hierarchy( $taxonomy, $term->term_id, $depth + 1 );
                 $html .= '</a>';
