@@ -28,7 +28,7 @@ ul.term-nav li ul.term-nav {
     margin: 0 auto;
 }
 
-ul.term-nav li.current-term ul.term-nav,
-ul.term-nav li.current-term-parent ul.term-nav {
+ul.term-nav li.current-term > ul.term-nav,
+ul.term-nav li.current-term-parent > ul.term-nav {
     display: block;
 }
