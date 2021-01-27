@@ -4,7 +4,9 @@ Plugin Name: Rather Simple Term Filter
 Plugin URI: 
 Description: Adds a term filter
 Version: 1.0
-WC tested up to: 4.4.1
+Requires at least: 4.9
+Requires PHP: 7.0
+WC tested up to: 4.9
 Author: Oscar Ciutat
 Author URI: http://oscarciutat.com/code/
 Text Domain: rather-simple-term-filter
