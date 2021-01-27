@@ -124,6 +124,7 @@ class Rather_Simple_Category_Filter {
         if ( $terms ) {
             $is_submenu = ( $depth > 0 ) ? ' sub-menu' : '';
             $all_link = ( $parent > 0 ) ? get_term_link( $parent ) : '';
+            $html .= '<nav class="terms-navigation">';
             $html .= '<ul class="term-nav' . $is_submenu . '">';
             $html .= '<li><a href="' . $all_link . '">' . esc_html( 'All', 'rather-simple-category-filter' ) . '</a></li>';
             foreach ( $terms as $term ) {
@@ -138,6 +139,7 @@ class Rather_Simple_Category_Filter {
                 $html .= '</li>';
             }
             $html .= '</ul>';
+            $html .= '</nav>';
         }
         return $html;
     }
