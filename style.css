@@ -6,41 +6,6 @@
     margin-bottom: 5px;
 }
 
-.qodef-filter-holder-inner ul {
-    display: block;
-    list-style: none;
-}
-
-.qodef-filter-holder-inner ul li {
-    cursor: pointer;
-    display: inline-block;
-    margin: 0;
-    text-align: center;
-    padding: 0 15px;
-    padding-left: 15px;
-}
-
-.qodef-filter-holder-inner .qodef-filter-child-categories-holder {
-    min-height: 50px;
-}
-
-.qodef-filter-holder-inner .qodef-filter-child-categories {
-    top: auto;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    display: none;
-    position: absolute;
-}
-
-.qodef-filter-holder-inner .qodef-filter-child-categories.current-term {
-    display: block;
-}
-
-.qodef-filter-holder-inner .current-term {
-    font-weight: 700;
-}
-
 ul.term-nav {
     position: relative;
     list-style: none;
