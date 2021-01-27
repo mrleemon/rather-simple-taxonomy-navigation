@@ -64,7 +64,6 @@ class Rather_Simple_Category_Filter {
         add_action( 'init', array( $this, 'load_language' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
-        //add_action( 'woocommerce_before_shop_loop', array( $this, 'add_category_filter_links' ) );
         add_action( 'woocommerce_before_shop_loop', array( $this, 'show_terms_navigation' ) );
 
     }
@@ -95,6 +94,15 @@ class Rather_Simple_Category_Filter {
     }
 
     /**
+     * Show terms navigation
+     *
+     */
+    public function show_terms_navigation() {
+        $html = Rather_Simple_Category_Filter::get_taxonomy_hierarchy( 'product_cat' );
+        echo $html;
+    }
+
+    /**
      * Get taxonomy hierarchy
      *
      * @param $taxonomy
@@ -114,9 +122,10 @@ class Rather_Simple_Category_Filter {
         );
         $terms = get_terms( $args );
         if ( $terms ) {
-            $is_submenu = ( $depth > 0 ) ? ' sub-menu': '';
+            $is_submenu = ( $depth > 0 ) ? ' sub-menu' : '';
+            $all_link = ( $parent > 0 ) ? get_term_link( $parent ) : '';
             $html .= '<ul class="term-nav' . $is_submenu . '">';
-            $html .= '<li><a href="">' . esc_html( 'All', 'rather-simple-category-filter' ) . '</a></li>';
+            $html .= '<li><a href="' . $all_link . '">' . esc_html( 'All', 'rather-simple-category-filter' ) . '</a></li>';
             foreach ( $terms as $term ) {
                 $classes = [];
                 $classes[] = 'term-item';
@@ -132,16 +141,7 @@ class Rather_Simple_Category_Filter {
         }
         return $html;
     }
-
-    /**
-     * Show terms navigation
-     *
-     */
-    public function show_terms_navigation() {
-        $html = Rather_Simple_Category_Filter::get_taxonomy_hierarchy( 'product_cat' );
-        echo $html;
-    }
-    
+   
 }
 
 add_action( 'plugins_loaded', array( Rather_Simple_Category_Filter::get_instance(), 'plugin_setup' ) );
