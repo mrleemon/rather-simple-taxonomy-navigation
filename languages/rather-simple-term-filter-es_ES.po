@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rather Simple Term Filter\n"
-"POT-Creation-Date: 2021-01-27 17:13+0100\n"
-"PO-Revision-Date: 2021-01-27 17:13+0100\n"
+"POT-Creation-Date: 2021-01-27 17:18+0100\n"
+"PO-Revision-Date: 2021-01-27 17:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -21,6 +21,10 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
+#: rather-simple-term-filter.php:125
+msgid "All"
+msgstr "Todos"
+
 #. Plugin Name of the plugin/theme
 msgid "Rather Simple Term Filter"
 msgstr ""
@@ -36,6 +40,3 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "http://oscarciutat.com/code/"
 msgstr ""
-
-#~ msgid "All"
-#~ msgstr "Todos"
