@@ -97,7 +97,7 @@ class Rather_Simple_Term_Filter {
      *
      */
     public function test() {
-        do_action( 'show_terms_navigation', 'product', 'producut_cat' );
+        do_action( 'show_terms_navigation', 'product', 'product_cat' );
     }
 
     /**
