@@ -34,7 +34,6 @@ class Rather_Simple_Term_Filter {
      */
     protected static $instance = null;
 
-
     /**
      * Access this plugin’s working instance
      *
@@ -50,7 +49,6 @@ class Rather_Simple_Term_Filter {
         return self::$instance;
 
     }
-
     
     /**
      * Used for regular plugin work.
@@ -68,14 +66,12 @@ class Rather_Simple_Term_Filter {
 
     }
     
-    
     /**
      * Constructor. Intentionally left empty and public.
      *
      * @see plugin_setup()
      */
     public function __construct() {}
-
     
     /*
      * load_language
@@ -115,7 +111,7 @@ class Rather_Simple_Term_Filter {
         $html = '';
         $current_term_id = get_queried_object_id();
         $args = array(
-            'taxonomy'   => 'product_cat',
+            'taxonomy'   => $taxonomy,
             'parent'     => $parent,
             'order_by'   => 'name',
             'hide_empty' => true,
@@ -126,7 +122,7 @@ class Rather_Simple_Term_Filter {
             $all_link = ( $parent > 0 ) ? get_term_link( $parent ) : get_post_type_archive_link( $post_type );
             $html .= '<nav class="terms-navigation">';
             $html .= '<ul class="term-nav' . $is_submenu . '">';
-            $html .= '<li><a href="' . $all_link . '">' . esc_html( 'All', 'rather-simple-term-filter' ) . '</a></li>';
+            $html .= '<li><a href="' . $all_link . '">' . esc_html__( 'All', 'rather-simple-term-filter' ) . '</a></li>';
             foreach ( $terms as $term ) {
                 $classes = [];
                 $classes[] = 'term-item';
