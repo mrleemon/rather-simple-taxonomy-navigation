@@ -105,7 +105,10 @@ class Rather_Simple_Term_Filter {
      *
      */
     public function show_terms_navigation( $post_type = 'post', $taxonomy = 'category' ) {
-        $html = Rather_Simple_Term_Filter::get_taxonomy_hierarchy( $post_type, $taxonomy );
+        $html = '';
+        if ( is_taxonomy_hierarchical( $taxonomy ) ) {
+            $html = Rather_Simple_Term_Filter::get_taxonomy_hierarchy( $post_type, $taxonomy );
+        }
         echo $html;
     }
 
