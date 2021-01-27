@@ -98,7 +98,7 @@ class Rather_Simple_Category_Filter {
      *
      */
     public function show_terms_navigation() {
-        $html = Rather_Simple_Category_Filter::get_taxonomy_hierarchy( 'product_cat' );
+        $html = Rather_Simple_Category_Filter::get_taxonomy_hierarchy( 'product', 'product_cat' );
         echo $html;
     }
 
@@ -110,7 +110,7 @@ class Rather_Simple_Category_Filter {
 	 * 
 	 * @return string
      */
-    public function get_taxonomy_hierarchy( $taxonomy, $parent = 0, $depth = 0 ) {
+    public function get_taxonomy_hierarchy( $post_type, $taxonomy, $parent = 0, $depth = 0 ) {
         $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
         $html = '';
         $current_term_id = get_queried_object_id();
@@ -123,7 +123,7 @@ class Rather_Simple_Category_Filter {
         $terms = get_terms( $args );
         if ( $terms ) {
             $is_submenu = ( $depth > 0 ) ? ' sub-menu' : '';
-            $all_link = ( $parent > 0 ) ? get_term_link( $parent ) : '';
+            $all_link = ( $parent > 0 ) ? get_term_link( $parent ) : get_post_type_archive_link( $post_type );
             $html .= '<nav class="terms-navigation">';
             $html .= '<ul class="term-nav' . $is_submenu . '">';
             $html .= '<li><a href="' . $all_link . '">' . esc_html( 'All', 'rather-simple-category-filter' ) . '</a></li>';
@@ -134,7 +134,7 @@ class Rather_Simple_Category_Filter {
                 $classes[] = ( term_is_ancestor_of( $term->term_id, $current_term_id, $taxonomy ) ) ? 'current-term-parent' : '';
                 $html .= '<li class="' . esc_attr( implode( ' ', $classes ) ) . '">';
                 $html .= '<a href="' . get_term_link( $term->term_id ) . '">' . $term->name . '</a>';
-                $html .= Rather_Simple_Category_Filter::get_taxonomy_hierarchy( $taxonomy, $term->term_id, $depth + 1 );
+                $html .= Rather_Simple_Category_Filter::get_taxonomy_hierarchy( $post_type, $taxonomy, $term->term_id, $depth + 1 );
                 $html .= '</a>';
                 $html .= '</li>';
             }
