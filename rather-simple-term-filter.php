@@ -120,7 +120,9 @@ class Rather_Simple_Term_Filter {
         if ( $terms ) {
             $is_submenu = ( $depth > 0 ) ? ' sub-menu' : '';
             $all_link = ( $parent > 0 ) ? get_term_link( $parent ) : get_post_type_archive_link( $post_type );
-            $html .= '<nav class="terms-navigation">';
+            if ( $depth == 0 ) {
+                $html .= '<nav class="terms-navigation">';
+            }
             $html .= '<ul class="term-nav' . $is_submenu . '">';
             $html .= '<li><a href="' . $all_link . '">' . esc_html__( 'All', 'rather-simple-term-filter' ) . '</a></li>';
             foreach ( $terms as $term ) {
@@ -135,7 +137,9 @@ class Rather_Simple_Term_Filter {
                 $html .= '</li>';
             }
             $html .= '</ul>';
-            $html .= '</nav>';
+            if ( $depth == 0 ) {
+                $html .= '</nav>';
+            }
         }
         return $html;
     }
