@@ -1,1 +1,1 @@
-# rather-simple-category-filter
+# rather-simple-term-filter
