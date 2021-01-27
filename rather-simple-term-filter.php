@@ -104,7 +104,7 @@ class Rather_Simple_Term_Filter {
      * Show terms navigation
      *
      */
-    public function show_terms_navigation( $post_type, $taxonomy ) {
+    public function show_terms_navigation( $post_type = 'post', $taxonomy = 'category' ) {
         $html = Rather_Simple_Term_Filter::get_taxonomy_hierarchy( $post_type, $taxonomy );
         echo $html;
     }
