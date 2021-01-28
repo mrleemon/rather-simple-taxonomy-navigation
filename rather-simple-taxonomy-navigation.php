@@ -64,7 +64,7 @@ class Rather_Simple_Taxonomy_Navigation {
         add_action( 'init', array( $this, 'load_language' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
-        add_action( 'show_taxonomy_navigation', array( $this, 'show_taxonomy_navigation' ), 10, 2 );
+        add_action( 'show_taxonomy_navigation', array( $this, 'show_taxonomy_navigation' ), 10, 3 );
         add_action( 'woocommerce_before_shop_loop', array( $this, 'test' ) );
 
     }
@@ -104,10 +104,10 @@ class Rather_Simple_Taxonomy_Navigation {
      * Show terms navigation
      *
      */
-    public function show_taxonomy_navigation( $post_type = 'post', $taxonomy = 'category' ) {
+    public function show_taxonomy_navigation( $post_type = 'post', $taxonomy = 'category', $parent = 0 ) {
         $html = '';
         if ( is_taxonomy_hierarchical( $taxonomy ) ) {
-            $html = Rather_Simple_Taxonomy_Navigation::get_taxonomy_hierarchy( $post_type, $taxonomy );
+            $html = Rather_Simple_Taxonomy_Navigation::get_taxonomy_hierarchy( $post_type, $taxonomy, $parent );
         }
         echo $html;
     }
@@ -115,6 +115,7 @@ class Rather_Simple_Taxonomy_Navigation {
     /**
      * Get taxonomy hierarchy
      *
+     * @param $post_type
      * @param $taxonomy
      * @param $parent
      * @param $depth
