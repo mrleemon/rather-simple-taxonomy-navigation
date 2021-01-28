@@ -1,25 +1,25 @@
-.terms-navigation {
+.taxonomy-navigation {
     margin-bottom: 40px;
 }
 
-ul.term-nav {
+ul.tax-nav {
     position: relative;
     list-style: none;
     text-align: center;
 }
 
-ul.term-nav li {
+ul.tax-nav li {
     display: inline-block;
     margin: 0;
     padding: 0 15px;
 }
 
-ul.term-nav li.current-term > a,
-ul.term-nav li.current-term-parent > a {
+ul.tax-nav li.current-term > a,
+ul.tax-nav li.current-term-parent > a {
     font-weight: 700;
 }
 
-ul.term-nav li ul.term-nav {
+ul.tax-nav li ul.tax-nav {
     display: none;
     position: absolute;
     top: auto;
@@ -28,7 +28,7 @@ ul.term-nav li ul.term-nav {
     margin: 0 auto;
 }
 
-ul.term-nav li.current-term > ul.term-nav,
-ul.term-nav li.current-term-parent > ul.term-nav {
+ul.tax-nav li.current-term > ul.tax-nav,
+ul.tax-nav li.current-term-parent > ul.tax-nav {
     display: block;
 }

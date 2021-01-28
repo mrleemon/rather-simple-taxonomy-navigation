@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Rather Simple Term Filter\n"
-"POT-Creation-Date: 2021-01-27 17:18+0100\n"
-"PO-Revision-Date: 2021-01-27 17:18+0100\n"
+"Project-Id-Version: Rather Simple Taxonomy Navigation\n"
+"POT-Creation-Date: 2021-01-28 01:02+0100\n"
+"PO-Revision-Date: 2021-01-28 01:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es_ES\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: rather-simple-term-filter.php\n"
+"X-Poedit-WPHeader: rather-simple-taxonomy-navigation.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
@@ -21,16 +21,16 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: rather-simple-term-filter.php:125
+#: rather-simple-taxonomy-navigation.php:141
 msgid "All"
-msgstr "Todos"
+msgstr "Tots"
 
 #. Plugin Name of the plugin/theme
-msgid "Rather Simple Term Filter"
+msgid "Rather Simple Taxonomy Navigation"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Adds a term filter"
+msgid "Adds a taxonomy navigation"
 msgstr ""
 
 #. Author of the plugin/theme

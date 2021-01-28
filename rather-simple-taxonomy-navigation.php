@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Rather Simple Term Filter
+Plugin Name: Rather Simple Taxonomy Navigation
 Plugin URI: 
-Description: Adds a term filter
+Description: Adds a taxonomy navigation
 Version: 1.0
 Requires at least: 4.9
 Requires PHP: 7.0
 WC tested up to: 4.9
 Author: Oscar Ciutat
 Author URI: http://oscarciutat.com/code/
-Text Domain: rather-simple-term-filter
+Text Domain: rather-simple-taxonomy-navigation
 License: GPLv2 or later
 
   This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@ License: GPLv2 or later
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-class Rather_Simple_Term_Filter {
+class Rather_Simple_Taxonomy_Navigation {
     
     /**
      * Plugin instance.
@@ -64,7 +64,7 @@ class Rather_Simple_Term_Filter {
         add_action( 'init', array( $this, 'load_language' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
-        add_action( 'show_terms_navigation', array( $this, 'show_terms_navigation' ), 10, 2 );
+        add_action( 'show_taxonomy_navigation', array( $this, 'show_taxonomy_navigation' ), 10, 2 );
         add_action( 'woocommerce_before_shop_loop', array( $this, 'test' ) );
 
     }
@@ -82,14 +82,14 @@ class Rather_Simple_Term_Filter {
      * @since 1.0
      */
     function load_language() {
-        load_plugin_textdomain( 'rather-simple-term-filter', '', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+        load_plugin_textdomain( 'rather-simple-taxonomy-navigation', '', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     }
 
     /**
      * Enqueues scripts and styles in the frontend.
      */
     function wp_enqueue_scripts(){
-        wp_enqueue_style( 'rscf-style', plugins_url( 'style.css', __FILE__ ) );
+        wp_enqueue_style( 'rstn-style', plugins_url( 'style.css', __FILE__ ) );
     }
 
     /**
@@ -97,17 +97,17 @@ class Rather_Simple_Term_Filter {
      *
      */
     public function test() {
-        do_action( 'show_terms_navigation', 'product', 'product_cat' );
+        do_action( 'show_taxonomy_navigation', 'product', 'product_cat' );
     }
 
     /**
      * Show terms navigation
      *
      */
-    public function show_terms_navigation( $post_type = 'post', $taxonomy = 'category' ) {
+    public function show_taxonomy_navigation( $post_type = 'post', $taxonomy = 'category' ) {
         $html = '';
         if ( is_taxonomy_hierarchical( $taxonomy ) ) {
-            $html = Rather_Simple_Term_Filter::get_taxonomy_hierarchy( $post_type, $taxonomy );
+            $html = Rather_Simple_Taxonomy_Navigation::get_taxonomy_hierarchy( $post_type, $taxonomy );
         }
         echo $html;
     }
@@ -135,10 +135,10 @@ class Rather_Simple_Term_Filter {
             $is_submenu = ( $depth > 0 ) ? ' sub-menu' : '';
             $all_link = ( $parent > 0 ) ? get_term_link( $parent ) : get_post_type_archive_link( $post_type );
             if ( $depth == 0 ) {
-                $html .= '<nav class="terms-navigation">';
+                $html .= '<nav class="taxonomy-navigation">';
             }
-            $html .= '<ul class="term-nav' . $is_submenu . '">';
-            $html .= '<li><a href="' . $all_link . '">' . esc_html__( 'All', 'rather-simple-term-filter' ) . '</a></li>';
+            $html .= '<ul class="tax-nav' . $is_submenu . '">';
+            $html .= '<li><a href="' . $all_link . '">' . esc_html__( 'All', 'rather-simple-taxonomy-navigation' ) . '</a></li>';
             foreach ( $terms as $term ) {
                 $classes = [];
                 $classes[] = 'term-item';
@@ -146,7 +146,7 @@ class Rather_Simple_Term_Filter {
                 $classes[] = ( term_is_ancestor_of( $term->term_id, $current_term_id, $taxonomy ) ) ? 'current-term-parent' : '';
                 $html .= '<li class="' . esc_attr( implode( ' ', $classes ) ) . '">';
                 $html .= '<a href="' . get_term_link( $term->term_id ) . '">' . $term->name . '</a>';
-                $html .= Rather_Simple_Term_Filter::get_taxonomy_hierarchy( $post_type, $taxonomy, $term->term_id, $depth + 1 );
+                $html .= Rather_Simple_Taxonomy_Navigation::get_taxonomy_hierarchy( $post_type, $taxonomy, $term->term_id, $depth + 1 );
                 $html .= '</a>';
                 $html .= '</li>';
             }
@@ -160,4 +160,4 @@ class Rather_Simple_Term_Filter {
    
 }
 
-add_action( 'plugins_loaded', array( Rather_Simple_Term_Filter::get_instance(), 'plugin_setup' ) );
+add_action( 'plugins_loaded', array( Rather_Simple_Taxonomy_Navigation::get_instance(), 'plugin_setup' ) );
