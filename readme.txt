@@ -23,9 +23,11 @@ This plugin is experimental and is provided with no support or warranty.
 = How can I show the taxonomy navigation in a theme? =
 You can use the `show_taxonomy_navigation` action:
 
-`do_action( 'show_taxonomy_navigation', $post_type, $taxonomy )`;
+`do_action( 'show_taxonomy_navigation', $post_type, $taxonomy, $parent )`;
 
-where `$post_type` is the post type and `$taxonomy` is the taxonomy to display
+where `$post_type` is the post type and `$taxonomy` is the taxonomy to display,
+and $parent is an optional parameter that specifies the starting parent term
+(0 by default, to show all terms in the taxonomy).
 
 Example:
 
