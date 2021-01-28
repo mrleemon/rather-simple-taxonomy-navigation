@@ -2,24 +2,24 @@
     margin-bottom: 40px;
 }
 
-ul.tax-nav {
+.taxonomy-navigation ul.tax-nav {
     position: relative;
     list-style: none;
     text-align: center;
 }
 
-ul.tax-nav li {
+.taxonomy-navigation ul.tax-nav li {
     display: inline-block;
     margin: 0;
     padding: 0 15px;
 }
 
-ul.tax-nav li.current-term > a,
-ul.tax-nav li.current-term-parent > a {
+.taxonomy-navigation ul.tax-nav li.current-term > a,
+.taxonomy-navigation ul.tax-nav li.current-term-parent > a {
     font-weight: 700;
 }
 
-ul.tax-nav li ul.tax-nav {
+.taxonomy-navigation ul.tax-nav li ul.tax-nav {
     display: none;
     position: absolute;
     top: auto;
@@ -28,7 +28,7 @@ ul.tax-nav li ul.tax-nav {
     margin: 0 auto;
 }
 
-ul.tax-nav li.current-term > ul.tax-nav,
-ul.tax-nav li.current-term-parent > ul.tax-nav {
+.taxonomy-navigation ul.tax-nav li.current-term > ul.tax-nav,
+.taxonomy-navigation ul.tax-nav li.current-term-parent > ul.tax-nav {
     display: block;
 }
