@@ -2,24 +2,24 @@
     margin-bottom: 40px;
 }
 
-.taxonomy-navigation ul.tax-nav {
+.taxonomy-navigation ul.terms {
     position: relative;
     list-style: none;
     text-align: center;
 }
 
-.taxonomy-navigation ul.tax-nav li {
+.taxonomy-navigation ul.terms li {
     display: inline-block;
     margin: 0;
     padding: 0 15px;
 }
 
-.taxonomy-navigation ul.tax-nav li.current-term > a,
-.taxonomy-navigation ul.tax-nav li.current-term-parent > a {
+.taxonomy-navigation ul.terms li.current-term > a,
+.taxonomy-navigation ul.terms li.current-term-parent > a {
     font-weight: 700;
 }
 
-.taxonomy-navigation ul.tax-nav li ul.tax-nav {
+.taxonomy-navigation ul.terms li ul.terms {
     display: none;
     position: absolute;
     top: auto;
@@ -28,7 +28,7 @@
     margin: 0 auto;
 }
 
-.taxonomy-navigation ul.tax-nav li.current-term > ul.tax-nav,
-.taxonomy-navigation ul.tax-nav li.current-term-parent > ul.tax-nav {
+.taxonomy-navigation ul.terms li.current-term > ul.terms,
+.taxonomy-navigation ul.terms li.current-term-parent > ul.terms {
     display: block;
 }

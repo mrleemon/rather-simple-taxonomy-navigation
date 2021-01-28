@@ -137,8 +137,7 @@ class Rather_Simple_Taxonomy_Navigation {
                 $html .= '<nav class="taxonomy-navigation">';
             }
             $ul_classes = [];
-            $ul_classes[] = 'tax-nav';
-            $ul_classes[] = ( $depth > 0 ) ? 'sub-menu' : null;
+            $ul_classes[] = 'terms';
             $html .= '<ul class="' . esc_attr( implode( ' ', array_filter( $ul_classes ) ) ) . '">';
             $all_link = ( $parent > 0 ) ? get_term_link( $parent ) : get_post_type_archive_link( $post_type );
             $html .= '<li><a href="' . $all_link . '">' . esc_html__( 'All', 'rather-simple-taxonomy-navigation' ) . '</a></li>';
