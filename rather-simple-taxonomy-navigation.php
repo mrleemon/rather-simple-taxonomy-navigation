@@ -117,6 +117,7 @@ class Rather_Simple_Taxonomy_Navigation {
      *
      * @param $taxonomy
      * @param $parent
+     * @param $depth
 	 * 
 	 * @return string
      */
