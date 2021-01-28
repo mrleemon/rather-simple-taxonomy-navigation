@@ -1,1 +1,1 @@
-# rather-simple-term-filter
+# rather-simple-taxonomy-navigation
