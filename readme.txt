@@ -7,11 +7,11 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds a taxonomy navigation
+Display a taxonomy navigation
 
 == Description ==
 
-Adds a taxonomy navigation
+Display a taxonomy navigation
 
 This plugin is experimental and is provided with no support or warranty. 
 
@@ -20,7 +20,7 @@ This plugin is experimental and is provided with no support or warranty.
 2. Activate the plugin through the "Plugins" menu in WordPress
 
 == Frequently Asked Questions ==
-= How can I show the taxonomy navigation in a theme? =
+= How can I display the taxonomy navigation in a theme? =
 You can use the `show_taxonomy_navigation` action:
 
 `do_action( 'show_taxonomy_navigation', $post_type, $taxonomy, $parent )`;
