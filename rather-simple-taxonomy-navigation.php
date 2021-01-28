@@ -65,7 +65,6 @@ class Rather_Simple_Taxonomy_Navigation {
         add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
         add_action( 'show_taxonomy_navigation', array( $this, 'show_taxonomy_navigation' ), 10, 3 );
-        add_action( 'woocommerce_before_shop_loop', array( $this, 'test' ) );
 
     }
     
@@ -90,14 +89,6 @@ class Rather_Simple_Taxonomy_Navigation {
      */
     function wp_enqueue_scripts(){
         wp_enqueue_style( 'rstn-style', plugins_url( 'style.css', __FILE__ ) );
-    }
-
-    /**
-     * Test
-     *
-     */
-    public function test() {
-        do_action( 'show_taxonomy_navigation', 'product', 'product_cat' );
     }
 
     /**
