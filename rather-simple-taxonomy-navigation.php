@@ -110,8 +110,8 @@ class Rather_Simple_Taxonomy_Navigation {
      * @param $taxonomy
      * @param $parent
      * @param $depth
-	 * 
-	 * @return string
+     * 
+     * @return string
      */
     public function get_taxonomy_hierarchy( $post_type, $taxonomy, $parent = 0, $depth = 0 ) {
         $taxonomy = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
