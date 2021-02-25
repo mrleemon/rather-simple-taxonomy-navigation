@@ -132,14 +132,14 @@ class Rather_Simple_Taxonomy_Navigation {
             $ul_classes[] = 'terms';
             $html .= '<ul class="' . esc_attr( implode( ' ', array_filter( $ul_classes ) ) ) . '">';
             $all_link = ( $parent > 0 ) ? get_term_link( $parent ) : get_post_type_archive_link( $post_type );
-            $html .= '<li><a href="' . $all_link . '">' . esc_html__( 'All', 'rather-simple-taxonomy-navigation' ) . '</a></li>';
+            $html .= '<li><a href="' . esc_url( $all_link ) . '">' . esc_html__( 'All', 'rather-simple-taxonomy-navigation' ) . '</a></li>';
             foreach ( $terms as $term ) {
                 $li_classes = [];
                 $li_classes[] = 'term-item';
                 $li_classes[] = ( $term->term_id == $current_term_id ) ? 'current-term' : null;
                 $li_classes[] = ( term_is_ancestor_of( $term->term_id, $current_term_id, $taxonomy ) ) ? 'current-term-parent' : '';
                 $html .= '<li class="' . esc_attr( implode( ' ', array_filter( $li_classes ) ) ) . '">';
-                $html .= '<a href="' . get_term_link( $term->term_id ) . '">' . $term->name . '</a>';
+                $html .= '<a href="' . esc_url( get_term_link( $term->term_id ) ) . '">' . $term->name . '</a>';
                 $html .= Rather_Simple_Taxonomy_Navigation::get_taxonomy_hierarchy( $post_type, $taxonomy, $term->term_id, $depth + 1 );
                 $html .= '</a>';
                 $html .= '</li>';
