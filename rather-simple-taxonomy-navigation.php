@@ -98,6 +98,12 @@ class Rather_Simple_Taxonomy_Navigation {
      */
     public function show_taxonomy_navigation( $post_type = 'post', $taxonomy = 'category', $parent = 0 ) {
         $html = '';
+
+        if ( $parent != 0 && ! term_exists( $parent, $taxonomy ) ) {
+            // Check if parent term exists
+            $parent = 0;
+        }
+
         if ( is_taxonomy_hierarchical( $taxonomy ) ) {
             $html = Rather_Simple_Taxonomy_Navigation::get_taxonomy_hierarchy( $post_type, $taxonomy, $parent );
         }
