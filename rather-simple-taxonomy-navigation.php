@@ -82,7 +82,7 @@ class Rather_Simple_Taxonomy_Navigation {
 	 * @since 1.0
 	 */
 	public function load_language() {
-		load_plugin_textdomain( 'rather-simple-taxonomy-navigation', '', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'rather-simple-taxonomy-navigation', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
