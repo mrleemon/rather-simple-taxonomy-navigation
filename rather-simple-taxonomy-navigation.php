@@ -3,7 +3,6 @@
  * Plugin Name: Rather Simple Taxonomy Navigation
  * Plugin URI:
  * Update URI: false
- * Description: Adds a taxonomy navigation
  * Version: 1.0
  * Requires at least: 4.9
  * Requires PHP: 7.0
@@ -11,6 +10,7 @@
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code/
  * Text Domain: rather-simple-taxonomy-navigation
+ * Description: Adds a taxonomy navigation
  * License: GPLv2 or later
  *
  * This program is free software; you can redistribute it and/or modify
