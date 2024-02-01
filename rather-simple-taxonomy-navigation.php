@@ -53,7 +53,6 @@ class Rather_Simple_Taxonomy_Navigation {
 		}
 
 		return self::$instance;
-
 	}
 
 	/**
@@ -66,7 +65,6 @@ class Rather_Simple_Taxonomy_Navigation {
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
 		add_action( 'show_taxonomy_navigation', array( $this, 'show_taxonomy_navigation' ), 10, 3 );
-
 	}
 
 	/**
@@ -166,7 +164,6 @@ class Rather_Simple_Taxonomy_Navigation {
 		}
 		return $html;
 	}
-
 }
 
 add_action( 'plugins_loaded', array( Rather_Simple_Taxonomy_Navigation::get_instance(), 'plugin_setup' ) );
