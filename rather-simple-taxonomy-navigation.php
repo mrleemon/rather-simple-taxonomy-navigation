@@ -100,18 +100,18 @@ class Rather_Simple_Taxonomy_Navigation {
 	 *
 	 * @param string  $post_type  The post type.
 	 * @param string  $taxonomy   The taxonomy.
-	 * @param integer $parent     The parent term id.
+	 * @param integer $parent_term     The parent term id.
 	 */
-	public function show_taxonomy_navigation( $post_type = 'post', $taxonomy = 'category', $parent = 0 ) {
+	public function show_taxonomy_navigation( $post_type = 'post', $taxonomy = 'category', $parent_term = 0 ) {
 		$html = '';
 
-		if ( 0 !== $parent && ! term_exists( $parent, $taxonomy ) ) {
+		if ( 0 !== $parent_term && ! term_exists( $parent_term, $taxonomy ) ) {
 			// Check if parent term exists.
-			$parent = 0;
+			$parent_term = 0;
 		}
 
 		if ( is_taxonomy_hierarchical( $taxonomy ) ) {
-			$html = self::get_taxonomy_hierarchy( $post_type, $taxonomy, $parent );
+			$html = self::get_taxonomy_hierarchy( $post_type, $taxonomy, $parent_term );
 		}
 		echo $html;
 	}
@@ -121,18 +121,18 @@ class Rather_Simple_Taxonomy_Navigation {
 	 *
 	 * @param string  $post_type  The post type.
 	 * @param string  $taxonomy   The taxonomy.
-	 * @param integer $parent     The parent term id.
+	 * @param integer $parent_term     The parent term id.
 	 * @param integer $depth      The depth.
 	 *
 	 * @return string
 	 */
-	public function get_taxonomy_hierarchy( $post_type, $taxonomy, $parent = 0, $depth = 0 ) {
+	public function get_taxonomy_hierarchy( $post_type, $taxonomy, $parent_term = 0, $depth = 0 ) {
 		$taxonomy        = is_array( $taxonomy ) ? array_shift( $taxonomy ) : $taxonomy;
 		$html            = '';
 		$current_term_id = get_queried_object_id();
 		$args            = array(
 			'taxonomy'   => $taxonomy,
-			'parent'     => $parent,
+			'parent'     => $parent_term,
 			'order_by'   => 'name',
 			'hide_empty' => true,
 		);
@@ -144,7 +144,7 @@ class Rather_Simple_Taxonomy_Navigation {
 			$ul_classes   = array();
 			$ul_classes[] = 'terms';
 			$html        .= '<ul class="' . esc_attr( implode( ' ', array_filter( $ul_classes ) ) ) . '">';
-			$all_link     = ( $parent > 0 ) ? get_term_link( $parent ) : get_post_type_archive_link( $post_type );
+			$all_link     = ( $parent_term > 0 ) ? get_term_link( $parent_term ) : get_post_type_archive_link( $post_type );
 			$html        .= '<li><a href="' . esc_url( $all_link ) . '">' . esc_html__( 'All', 'rather-simple-taxonomy-navigation' ) . '</a></li>';
 			foreach ( $terms as $term ) {
 				$li_classes   = array();
