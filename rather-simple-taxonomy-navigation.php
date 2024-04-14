@@ -5,7 +5,7 @@
  * Update URI: false
  * Version: 1.0
  * Requires at least: 4.9
- * Requires PHP: 7.0
+ * Requires PHP: 7.4
  * WC tested up to: 4.9
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code/
