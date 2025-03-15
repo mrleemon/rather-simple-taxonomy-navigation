@@ -10,6 +10,7 @@
  * Author: Oscar Ciutat
  * Author URI: http://oscarciutat.com/code/
  * Text Domain: rather-simple-taxonomy-navigation
+ * Domain Path: /languages
  * Description: Adds a taxonomy navigation
  * License: GPLv2 or later
  *
