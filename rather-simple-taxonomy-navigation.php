@@ -4,7 +4,7 @@
  * Plugin URI:
  * Update URI: false
  * Version: 1.0
- * Requires at least: 4.9
+ * Requires at least: 6.8
  * Requires PHP: 7.4
  * WC tested up to: 4.9
  * Author: Oscar Ciutat
@@ -62,7 +62,6 @@ class Rather_Simple_Taxonomy_Navigation {
 	public function plugin_setup() {
 
 		// Init.
-		add_action( 'init', array( $this, 'load_language' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wp_enqueue_scripts' ) );
 
 		add_action( 'show_taxonomy_navigation', array( $this, 'show_taxonomy_navigation' ), 10, 3 );
@@ -74,15 +73,6 @@ class Rather_Simple_Taxonomy_Navigation {
 	 * @see plugin_setup()
 	 */
 	public function __construct() {}
-
-	/**
-	 * Load language
-	 *
-	 * @since 1.0
-	 */
-	public function load_language() {
-		load_plugin_textdomain( 'rather-simple-taxonomy-navigation', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-	}
 
 	/**
 	 * Enqueues scripts and styles in the frontend.
