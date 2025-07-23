@@ -1,5 +1,5 @@
 {
-  "name": "rather-simple-woocommerce-tax-class-column",
+  "name": "rather-simple-taxonomy-navigation",
   "author": "Oscar Ciutat",
   "version": "1.0.0",
   "license": "GPL-2.0-or-later",
@@ -7,6 +7,6 @@
     "dir-archiver": "^2.1.0"
   },
   "scripts": {
-    "bundle": "dir-archiver --src . --dest ../rather-simple-woocommerce-tax-class-column.zip --exclude .git .gitattributes .gitignore node_modules package-lock.json package.json"
+    "bundle": "dir-archiver --src . --dest ../rather-simple-taxonomy-navigation.zip --exclude .git .gitattributes .gitignore node_modules package-lock.json package.json"
   }
 }
