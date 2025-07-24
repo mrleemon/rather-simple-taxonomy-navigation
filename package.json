@@ -7,6 +7,6 @@
     "dir-archiver": "^2.1.0"
   },
   "scripts": {
-    "bundle": "dir-archiver --src . --dest ../rather-simple-taxonomy-navigation.zip --exclude .git .gitattributes .gitignore node_modules package-lock.json package.json"
+    "bundle": "dir-archiver --includebasedir --src . --dest ../rather-simple-taxonomy-navigation.zip --exclude .git .gitattributes .gitignore node_modules package-lock.json package.json"
   }
 }
